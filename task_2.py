@@ -10,18 +10,26 @@ def get_numbers_ticket(min, max, quantity):
     
     
     if max>1000: 
-        print("Max value must be lower than 1000. Try again. ")
+        print("Max value must be lower than 1000. Try again.")
         return tickets
-     
     
-    for i in range (quantity):
+    if min>max:
+        print("Min value must be lower than max. Try again.")
+        return tickets
+    
+    if quantity>(max-min):
+        print(f"There is not enough values to return {quantity} numbers. Try again.")
+        return tickets
+         
+    
+    while len(tickets)<quantity:
         number=randint(min, max)
         tickets.add(number)
     
     sorted_tickets=sorted(tickets)   
     return sorted_tickets
 
-print(get_numbers_ticket(3, 113, 5))
+print(get_numbers_ticket(1, 10, 5)) 
         
         
       
